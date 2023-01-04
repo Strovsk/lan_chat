@@ -43,12 +43,6 @@ class Friend {
       },
     );
   }
-};
-
-const friend = new Friend('John', '127.0.0.1');
-const link = 'https://images.unsplash.com/photo-1484591974057-265bb767ef71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80'
-// const link = '/home/thiago/Documents/github/lan_chat/avatar.jpeg';
-friend.setupAvatar(link);
-// friend.setupAvatar('http://www.google.com');
+}
 
 export default Friend;
