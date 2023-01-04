@@ -1,1 +1,7 @@
+node_modules
 .obsidian
+
+src/data/*
+!src/data/.gitkeep
+
+.editorconfig
