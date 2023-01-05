@@ -3,7 +3,7 @@ tags: entity, phase1, message
 ---
 
 # Attributes
-- sender: **string**
+- sender: **[[Friend]]**
 - hour: **timestamp**
 - message: **string**
 - mediaAddressUr: **string**

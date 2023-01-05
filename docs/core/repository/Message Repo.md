@@ -3,7 +3,7 @@ tags: phase1, repository, message
 ---
 # Constructor
 - *message*: [[core/entities/Message|Message]]
-- *senderId*: **number**
+- *sender*: **[[Friend]]**
 
 # Methods
 - **storeMessage**() -> *void*

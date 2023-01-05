@@ -1,0 +1,5 @@
+class UFriend {
+  constructor() {
+    
+  }
+}
