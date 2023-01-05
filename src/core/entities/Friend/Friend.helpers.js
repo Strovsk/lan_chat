@@ -12,6 +12,11 @@ export async function filterRequest(response) {
 }
 
 export function isExternalLink(link) {
-  const pattern = /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/;
-  return pattern.test(link);
+  const httpLinkPattern = /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/;
+  return httpLinkPattern.test(link);
+}
+
+export function isData64(link) {
+  const base64Pattern = /^data:image\/[a-zA-Z]+;base64,([A-Za-z0-9+/]*={0,2})$/;
+  return base64Pattern.test(link);
 }

@@ -24,9 +24,12 @@ class Config {
     return JSON.parse(fs.readFileSync(this.configFilePath));
   }
   
-  static baseurl() {
+  static baseurl(location) {
     const config = this.#readConfigFile();
-    return config.installPath;
+    return path.join(
+      config.installPath,
+      location,
+    );
   }
 }
 
