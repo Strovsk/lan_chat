@@ -22,6 +22,14 @@
   },
   "homepage": "https://github.com/Strovsk/lan_chat#readme",
   "dependencies": {
+    "@prisma/client": "^4.8.1",
     "node-fetch": "^3.3.0"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.3",
+    "prisma": "^4.8.1"
+  },
+  "prisma": {
+    "schema": "src/infra/prisma/schema.prisma"
   }
 }
