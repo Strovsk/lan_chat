@@ -21,5 +21,6 @@ model Message {
   hour       DateTime @default(now())
   message    String
   senderName String
+  fromSender Boolean
   sender     Friend   @relation(fields: [senderName], references: [name])
 }

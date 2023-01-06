@@ -1,4 +1,5 @@
-import { PrismaClient } from "@prisma/client";
+const { PrismaClient } = require('@prisma/client');
+import { Friend } from '/core/entities';
 
 class RFriend {
   constructor() {
@@ -11,12 +12,9 @@ class RFriend {
         data: { name: friendObj.name, address: friendObj.address },
       });
 
-      this.prisma.$disconnect();
-      
       return newFriend;
     } catch (err) {
       console.error(err);
-      this.prisma.$disconnect();
       return null;
     }
   }
@@ -27,9 +25,20 @@ class RFriend {
   }
 
   async getAll() {
-    await this.prisma.$connect();
     const allFriendsList = await this.prisma.friend.findMany();
     return allFriendsList;
+  }
+
+  async getByName(name) {
+    const result = await this.prisma.friend.findFirstOrThrow({ where: { name } });
+    const friend = new Friend(result.name, result.address);
+    return friend;
+  }
+
+  async getByAddress(address) {
+    const result = await this.prisma.friend.findFirstOrThrow({ where: { address } });
+    const friend = new Friend(result.name, result.address);
+    return friend;
   }
 }
 

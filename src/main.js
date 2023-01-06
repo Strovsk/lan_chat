@@ -1,11 +1,14 @@
-import RFriend from "./core/repositories/Friend.repo.sqlite.js";
+import RFriend from 'infra/adapters/repositories/Friend';
+import { Friend } from 'core/entities';
 
 function main() {
   const createFriend = async () => {
-    const friend = new RFriend('John');
-    const createdFriend = await friend.delete();
-    console.log(createdFriend);
-    const friendsList = RFriend.getAll();
+    const friend = new Friend('John', '127.0.0.1');
+    const friendRepo = new RFriend();
+    // const result = await friendRepo.create(friend);
+    // const result = await friendRepo.getAll();
+    const result = await friendRepo.getByName('John');
+    console.log(result);
   };
   createFriend();
 }

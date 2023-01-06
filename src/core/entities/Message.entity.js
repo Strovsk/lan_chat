@@ -1,10 +1,11 @@
 class Message {
-  constructor(sender, hour, message, mediaAddressUrl = '', mediaBlob = '') {
-    this.senderInfo = sender;
+  constructor(senderAddress, hour, message, fromSender, mediaAddressUrl = '', mediaBlob = '') {
+    this.senderAddress = senderAddress;
     this.hour = hour;
     this.message = message;
     this.mediaAddressUrl = mediaAddressUrl;
     this.mediaBlob = mediaBlob;
+    this.fromSender = fromSender;
   }
 }
 
