@@ -6,3 +6,4 @@ src/data/*
 
 .editorconfig
 .env
+dist
