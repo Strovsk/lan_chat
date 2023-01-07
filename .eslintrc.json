@@ -1,0 +1,26 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "node": true
+    },
+    "extends": "prettier",
+    "overrides": [],
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "plugins": ["prettier"],
+    "rules": {
+        "prettier/prettier": ["error"],
+        "no-use-before-define": "error",
+        "no-unused-vars": "error",
+        "no-console": "warn"
+    },
+    "settings": {
+        "import/resolver": {
+            // To handle babel package: "eslint-import-resolver-babel-module"
+            "babel-module": {}
+        }
+    }
+}
