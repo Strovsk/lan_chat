@@ -19,6 +19,7 @@ class RMessage {
       data: {
         message: messageObj.message,
         senderIsMailler: messageObj.senderIsMailler,
+        hour: messageObj.hour,
         sender: { connect: { address } },
       },
     });
