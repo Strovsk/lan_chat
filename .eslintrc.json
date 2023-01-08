@@ -15,7 +15,8 @@
         "prettier/prettier": ["error"],
         "no-use-before-define": "error",
         "no-unused-vars": "error",
-        "no-console": "warn"
+        "no-console": "warn",
+        "comma-dangle": ["error", "always-multiline"]
     },
     "settings": {
         "import/resolver": {
