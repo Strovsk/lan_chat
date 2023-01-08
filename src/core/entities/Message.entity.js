@@ -1,14 +1,20 @@
 class Message {
   constructor(
     senderAddress,
-    hour,
     message,
     senderIsMailler,
+    hour = '',
     mediaAddressUrl = '',
     mediaBlob = '',
   ) {
     this.senderAddress = senderAddress;
-    this.hour = hour;
+
+    if (hour === '') {
+      this.hour = new Date().toISOString();
+    } else {
+      this.hour = hour;
+    }
+
     this.message = message;
     this.mediaAddressUrl = mediaAddressUrl;
     this.mediaBlob = mediaBlob;
