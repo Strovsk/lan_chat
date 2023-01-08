@@ -14,13 +14,14 @@ class RFriend {
 
       return newFriend;
     } catch (err) {
-      console.error(err);
       return null;
     }
   }
 
   async delete() {
-    const result = await this.prisma.friend.delete({ where: { name: this.name } })
+    const result = await this.prisma.friend.delete({
+      where: { name: this.name },
+    });
     return result;
   }
 
@@ -30,13 +31,17 @@ class RFriend {
   }
 
   async getByName(name) {
-    const result = await this.prisma.friend.findFirstOrThrow({ where: { name } });
+    const result = await this.prisma.friend.findFirstOrThrow({
+      where: { name },
+    });
     const friend = new Friend(result.name, result.address);
     return friend;
   }
 
   async getByAddress(address) {
-    const result = await this.prisma.friend.findFirstOrThrow({ where: { address } });
+    const result = await this.prisma.friend.findFirstOrThrow({
+      where: { address },
+    });
     const friend = new Friend(result.name, result.address);
     return friend;
   }

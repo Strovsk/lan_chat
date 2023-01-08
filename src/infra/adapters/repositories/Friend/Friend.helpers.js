@@ -3,22 +3,20 @@ import path from 'node:path';
 import fetch from 'node-fetch';
 import Config from 'config';
 
-
 async function filterRequest(response) {
-  const blob = Buffer.from((await response.arrayBuffer()));
-      const [type, ext] = response.headers
-        .get('Content-Type')
-        .split('/');
+  const blob = Buffer.from(await response.arrayBuffer());
+  const [type, ext] = response.headers.get('Content-Type').split('/');
 
-      if (!type.startsWith('image')) {
-        throw new Error('The file must be an image');
-      }
+  if (!type.startsWith('image')) {
+    throw new Error('The file must be an image');
+  }
 
-      return { blob, ext };
+  return { blob, ext };
 }
 
 function isExternalLink(link) {
-  const httpLinkPattern = /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/;
+  const httpLinkPattern =
+    /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/;
   return httpLinkPattern.test(link);
 }
 
@@ -30,11 +28,8 @@ function isData64(link) {
 function saveBase64(datapath, avatarLocation) {
   const fileExtPattern = /^data:image\/(\w+);base64,/;
   const fileExt = datapath.match(fileExtPattern)[1];
-  
-  const pathAvatarFile = path.join(
-    avatarLocation,
-    `avatar.${fileExt}`,
-  );
+
+  const pathAvatarFile = path.join(avatarLocation, `avatar.${fileExt}`);
 
   const rawBase64Data = datapath.replace(/^data:image\/\w+;base64,/, '');
 
@@ -45,27 +40,17 @@ async function saveFromLink(link, avatarLocation) {
   const response = await fetch(link);
   const { blob, ext } = await filterRequest(response);
 
-  const pathAvatarFile = path.join(
-    avatarLocation,
-    `avatar.${ext}`,
-  );
+  const pathAvatarFile = path.join(avatarLocation, `avatar.${ext}`);
 
   fs.writeFileSync(pathAvatarFile, blob);
 }
 
 async function copyFromFile(filepath, avatarPath) {
-  const destlocation = path.join(
-    avatarPath,
-    path.basename(filepath),
-  );
+  const destlocation = path.join(avatarPath, path.basename(filepath));
 
-  fs.copyFile(
-    datapath,
-    destlocation,
-    (error) => {
-      if (error) throw new Error('cant select avatar');
-    },
-  );
+  fs.copyFile(datapath, destlocation, (error) => {
+    if (error) throw new Error('cant select avatar');
+  });
 }
 
 async function setupAvatar(datapath) {

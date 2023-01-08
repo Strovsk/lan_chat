@@ -13,14 +13,13 @@ class RMessage {
     if (messageObj.mediaBlob) {
       await this.writeMedia(messageObj, sender.name);
     }
-  
 
     const newMessage = await this.prisma.message.create({
       data: {
         message: this.messageObj.message,
         sender,
-      }
-    })
+      },
+    });
 
     return newMessage;
   }
