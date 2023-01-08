@@ -1,4 +1,6 @@
 import { PrismaClient } from '@prisma/client';
+import RStudent from '/infra/adapters/repositories/Friend';
+import writeMedia from './Message.helpers';
 
 class RMessage {
   constructor() {
@@ -6,18 +8,18 @@ class RMessage {
   }
 
   async store(messageObj) {
-    const sender = await this.prisma.friend.findFirst({
-      where: { address: messageObj.friendAddress },
-    });
+    const rstudent = new RStudent();
+    const { address } = await rstudent.getByAddress(messageObj.friendAddress);
 
     if (messageObj.mediaBlob) {
-      await this.writeMedia(messageObj, sender.name);
+      await writeMedia(messageObj, sender.name);
     }
 
     const newMessage = await this.prisma.message.create({
       data: {
-        message: this.messageObj.message,
-        sender,
+        message: messageObj.message,
+        senderIsMailler: messageObj.senderIsMailler,
+        sender: { connect: { address } },
       },
     });
 
