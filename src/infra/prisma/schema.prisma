@@ -2,25 +2,25 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
+    provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = env("DATABASE_URL")
+    provider = "sqlite"
+    url      = env("DATABASE_URL")
 }
 
 model Friend {
-  name     String    @unique
-  address  String    @unique
-  messages Message[]
+    name     String    @unique
+    address  String    @unique
+    messages Message[]
 }
 
 model Message {
-  id         Int      @id @default(autoincrement())
-  hour       DateTime @default(now())
-  message    String
-  senderName String
-  fromSender Boolean
-  sender     Friend   @relation(fields: [senderName], references: [name])
+    id              Int      @id @default(autoincrement())
+    hour            DateTime @default(now())
+    message         String
+    senderAddress   String
+    senderIsMailler Boolean
+    sender          Friend   @relation(fields: [senderAddress], references: [address])
 }
