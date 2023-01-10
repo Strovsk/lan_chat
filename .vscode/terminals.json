@@ -1,0 +1,21 @@
+{
+    "autorun": false,
+    "terminals": [
+        {
+            "name": "Babel",
+            "description": "Babel live transpiler",
+            "icon": "server-environment",
+            "color": "terminal.ansiYellow",
+            "focus": true,
+            "commands": ["clear", "npm run watch"]
+        },
+        {
+            "name": "Nodemon",
+            "description": "Nodemon live runner",
+            "icon": "server-environment",
+            "color": "terminal.ansiGreen",
+            "focus": true,
+            "commands": ["clear", "npm run start"]
+        }
+    ]
+}
