@@ -24,7 +24,8 @@
   "homepage": "https://github.com/Strovsk/lan_chat#readme",
   "dependencies": {
     "@prisma/client": "^4.8.1",
-    "node-fetch": "^3.3.0"
+    "node-fetch": "^3.3.0",
+    "pino": "^8.8.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.20.7",
@@ -38,6 +39,7 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.2.1",
     "nodemon": "^2.0.20",
+    "pino-pretty": "^9.1.1",
     "prettier": "^2.8.1",
     "prisma": "^4.8.1"
   },
