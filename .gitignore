@@ -4,6 +4,8 @@ node_modules
 src/data/*
 !src/data/.gitkeep
 
+src/infra/database
+
 .editorconfig
 .env
 dist
